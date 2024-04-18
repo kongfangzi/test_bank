@@ -10,7 +10,7 @@ package com.testbk.demo;
  */
 public class StringReplaceConsecutiveChars {
 
-    public static String replaceConsecutiveChars(String s) {
+    public static void replaceConsecutiveChars(String s) {
         StringBuilder sb = new StringBuilder();
         String replacedString = "";//被替换的字符串
         char replaceChar = 0;//替换字符
@@ -49,21 +49,11 @@ public class StringReplaceConsecutiveChars {
         }
 
         // 如果结果字符串中仍然有3个或更多连续字符，则递归调用此方法
-        if (haveConsecutiveChars(result, 3)) {
-            return replaceConsecutiveChars(result);
+        ConsecutiveCharsHandle consecutiveCharsHandle = new ConsecutiveCharsHandle();
+        if (consecutiveCharsHandle.handleChars(result, 3)) {
+            replaceConsecutiveChars(result);
         }
-
-        return result;
-    }
-
-    private static boolean haveConsecutiveChars(String s, int count) {
-        for (int i = 0; i < s.length() - count + 1; i++) {
-            if (s.charAt(i) == s.charAt(i + 1) && s.charAt(i) == s.charAt(i + 2)
-                    && s.charAt(i) == s.charAt(i + 3 - 1)) {
-                return true;
-            }
-        }
-        return false;
+        System.out.println("###########################");
     }
 
 }

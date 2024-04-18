@@ -1,3 +1,4 @@
+import com.testbk.demo.StringDelConsecutiveChars;
 import com.testbk.demo.StringReplaceConsecutiveChars;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,11 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author Liu Feng
  * @version 1.0
  * @packageName PACKAGE_NAME
- * @className StringReplaceConsecutiveCharsTest
- * @date 2024/4/12 1:13
- * @description 字符串替换连续字符测试类
+ * @className StringHandleConsecutiveCharsTest
+ * @date 2024/4/19 3:25
+ * @description 测试类
  */
-public class StringReplaceConsecutiveCharsTest {
+public class StringHandleConsecutiveCharsTest {
+
+    @Autowired
+    private StringDelConsecutiveChars delConsecutiveChars;
 
     @Autowired
     private StringReplaceConsecutiveChars replaceConsecutiveChars;
@@ -20,4 +24,10 @@ public class StringReplaceConsecutiveCharsTest {
         String input = "abcccbad";
         replaceConsecutiveChars.replaceConsecutiveChars(input);
     }
+    @Test
+    public void testStringDelConsecutiveChars() {
+        String input = "aabcccbbad";
+        delConsecutiveChars.removeConsecutiveChars(input);
+    }
+
 }

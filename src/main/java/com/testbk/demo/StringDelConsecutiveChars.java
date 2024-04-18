@@ -9,7 +9,7 @@ package com.testbk.demo;
  * @description 字符串去除连续相同字符
  */
 public class StringDelConsecutiveChars {
-    public static String removeConsecutiveChars(String s) {
+    public static void removeConsecutiveChars(String s) {
         StringBuilder sb = new StringBuilder();
         int count = 1;
 
@@ -34,21 +34,9 @@ public class StringDelConsecutiveChars {
         System.out.println(result); // 输出: "abcde" 或其他不超过3个连续相同字符的字符串
 
         // 如果结果字符串中仍然有3个或更多连续字符，则递归调用此方法
-        if (haveConsecutiveChars(result, 3)) {
-            return removeConsecutiveChars(result);
+        ConsecutiveCharsHandle consecutiveCharsHandle = new ConsecutiveCharsHandle();
+        if (consecutiveCharsHandle.handleChars(result, 3)) {
+            removeConsecutiveChars(result);
         }
-
-        return result;
     }
-
-    private static boolean haveConsecutiveChars(String s, int count) {
-        for (int i = 0; i < s.length() - count + 1; i++) {
-            if (s.charAt(i) == s.charAt(i + 1) && s.charAt(i) == s.charAt(i + 2)
-                    && s.charAt(i) == s.charAt(i + 3 - 1)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
 }
